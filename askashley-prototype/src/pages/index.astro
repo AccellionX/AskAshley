@@ -3,41 +3,35 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-const featuredLogos = [
-  '[Media / event logo placeholder]',
-  '[Media / event logo placeholder]',
-  '[Media / event logo placeholder]',
-  '[Media / event logo placeholder]',
-  '[Media / event logo placeholder]',
-];
+const featuredLogos = ['CBS', 'CNBC', 'Fox'];
 
 const focusAreas = [
   {
-    title: '[Focus area 1 — confirm with Ashley]',
-    body: 'e.g. Equity compensation for tech professionals',
+    title: 'Equity compensation for tech professionals',
+    body: 'Guidance around stock awards, RSUs, and equity events common in technology careers.',
   },
   {
-    title: '[Focus area 2 — confirm with Ashley]',
-    body: 'e.g. Wealth planning for families',
+    title: 'Wealth planning for families',
+    body: 'Coordinating goals, liquidity, and long-term planning across households.',
   },
   {
-    title: '[Focus area 3 — confirm with Ashley]',
-    body: 'e.g. Tax-aware investing',
+    title: 'Tax-aware investing',
+    body: 'Considering tax implications as part of thoughtful, long-term portfolio decisions.',
   },
 ];
 
 const speakingTopics = [
   {
-    title: '[Speaking topic 1 from Ashley\'s site]',
-    body: '[Short description of this topic — to be confirmed]',
+    title: 'Financial confidence for professionals',
+    body: 'Practical frameworks for making clear money decisions amid career growth and change.',
   },
   {
-    title: '[Speaking topic 2 from Ashley\'s site]',
-    body: '[Short description of this topic — to be confirmed]',
+    title: 'Equity compensation',
+    body: 'How tech professionals can approach RSUs, options, and concentrated equity with clarity.',
   },
   {
-    title: '[Speaking topic 3 from Ashley\'s site]',
-    body: '[Short description of this topic — to be confirmed]',
+    title: 'Women and wealth',
+    body: 'Conversations on building financial agency, independence, and long-term security.',
   },
 ];
 
@@ -56,32 +50,11 @@ const mediaAppearances = [
   },
 ];
 
-const insights = [
-  {
-    title: '[Insight article title placeholder]',
-    date: '[Date placeholder]',
-    summary: '[One-line article summary placeholder]',
-  },
-  {
-    title: '[Insight article title placeholder]',
-    date: '[Date placeholder]',
-    summary: '[One-line article summary placeholder]',
-  },
-  {
-    title: '[Insight article title placeholder]',
-    date: '[Date placeholder]',
-    summary: '[One-line article summary placeholder]',
-  },
-];
-
 const bio = `Ashley Russo is a nationally acclaimed financial strategist, speaker, and founder of Russo Wealth Management, an all-female advisory firm serving clients across the U.S. A trusted voice in finance and leadership, Ashley has been featured on Fox, CNBC, and CBS, and across top business publications. Through her work with companies like Apple, Airbnb, Lyft, Salesforce, and ServiceNow, she's helped thousands of professionals turn complexity into clarity — making financial planning feel human, achievable, and empowering.`;
 
-/** Replace with Ashley's preferred talk video ID to enable the lite-YouTube facade */
-const youtubeVideoId = 'PLACEHOLDER_VIDEO_ID';
-const hasYoutubeId = youtubeVideoId !== 'PLACEHOLDER_VIDEO_ID';
-const youtubeThumb = hasYoutubeId
-  ? `https://i.ytimg.com/vi/${youtubeVideoId}/hqdefault.jpg`
-  : null;
+/** Video ID from askashley.com media page */
+const youtubeVideoId = 'c9sGN_Ko4aM';
+const youtubeThumb = `https://i.ytimg.com/vi/${youtubeVideoId}/hqdefault.jpg`;
 ---
 
 <Layout>
@@ -136,10 +109,10 @@ const youtubeThumb = hasYoutubeId
         <div class="container-site">
           <h2 id="featured-heading" class="sr-only">As featured in and spoken at</h2>
           <p class="section-label mb-8 text-center">As featured in / Spoken at</p>
-          <ul class="fade-in flex flex-wrap items-center justify-center gap-x-10 gap-y-5">
+          <ul class="fade-in flex flex-wrap items-center justify-center gap-x-14 gap-y-5">
             {
               featuredLogos.map((logo) => (
-                <li class="font-serif text-lead italic text-navy/55">{logo}</li>
+                <li class="font-serif text-2xl tracking-wide text-navy/55 md:text-3xl">{logo}</li>
               ))
             }
           </ul>
@@ -180,9 +153,6 @@ const youtubeThumb = hasYoutubeId
             <h2 id="speaking-heading" class="heading-2 mt-5 text-ivory">
               Topics for corporate and association audiences
             </h2>
-            <p class="mt-4 max-w-prose text-body text-ivory/70">
-              [Speaking intro copy placeholder — confirm preferred positioning for corporate and association events]
-            </p>
           </div>
 
           <div class="mt-12 grid gap-5 md:grid-cols-3">
@@ -215,53 +185,30 @@ const youtubeThumb = hasYoutubeId
           </div>
 
           <div class="fade-in mt-10">
-            {
-              hasYoutubeId ? (
-                <button
-                  type="button"
-                  class="lite-youtube group relative aspect-video w-full overflow-hidden rounded-card bg-navy-deep text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
-                  data-youtube-id={youtubeVideoId}
-                  aria-label="Play Ashley Russo speaking appearance"
-                >
-                  <img
-                    src={youtubeThumb!}
-                    alt="Video thumbnail for Ashley Russo speaking appearance"
-                    class="absolute inset-0 h-full w-full object-cover transition-opacity duration-rise group-hover:opacity-90"
-                    loading="lazy"
-                    width="1280"
-                    height="720"
-                  />
-                  <span class="absolute inset-0 bg-navy-deep/35" aria-hidden="true"></span>
-                  <span
-                    class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-ivory/40 bg-navy/50 text-ivory backdrop-blur-sm"
-                    aria-hidden="true"
-                  >
-                    <svg class="ml-0.5 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                      <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                    </svg>
-                  </span>
-                </button>
-              ) : (
-                <div
-                  class="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-card bg-navy-deep text-center text-ivory"
-                  role="img"
-                  aria-label="YouTube video placeholder — replace PLACEHOLDER_VIDEO_ID with a real video ID"
-                >
-                  <div>
-                    <div
-                      class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-ivory/30"
-                      aria-hidden="true"
-                    >
-                      <svg class="ml-0.5 h-5 w-5 text-gold-soft" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                      </svg>
-                    </div>
-                    <p class="font-serif text-h3">Latest talk</p>
-                    <p class="mt-2 text-small text-ivory/60">[YouTube video ID placeholder]</p>
-                  </div>
-                </div>
-              )
-            }
+            <button
+              type="button"
+              class="lite-youtube group relative aspect-video w-full overflow-hidden rounded-card bg-navy-deep text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+              data-youtube-id={youtubeVideoId}
+              aria-label="Play Ashley Russo media appearance on YouTube"
+            >
+              <img
+                src={youtubeThumb}
+                alt="Video thumbnail for an Ashley Russo media appearance"
+                class="absolute inset-0 h-full w-full object-cover transition-opacity duration-rise group-hover:opacity-90"
+                loading="lazy"
+                width="1280"
+                height="720"
+              />
+              <span class="absolute inset-0 bg-navy-deep/35" aria-hidden="true"></span>
+              <span
+                class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-ivory/40 bg-navy/50 text-ivory backdrop-blur-sm"
+                aria-hidden="true"
+              >
+                <svg class="ml-0.5 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                </svg>
+              </span>
+            </button>
           </div>
 
           <div class="mt-10 grid gap-5 md:grid-cols-3">
@@ -278,40 +225,10 @@ const youtubeThumb = hasYoutubeId
         </div>
       </section>
 
-      <!-- Insights -->
-      <section id="insights" class="section bg-ivory" aria-labelledby="insights-heading">
-        <div class="container-site">
-          <div class="fade-in max-w-2xl">
-            <p class="section-label">Insights</p>
-            <div class="hairline-left"></div>
-            <h2 id="insights-heading" class="heading-2 mt-5">Notes on wealth and work</h2>
-          </div>
-
-          <div class="mt-12 grid gap-6 md:grid-cols-3">
-            {
-              insights.map((article, i) => (
-                <article class="card fade-in flex flex-col" style={`transition-delay: ${i * 60}ms`}>
-                  <time class="text-xs uppercase tracking-label text-navy/45">{article.date}</time>
-                  <h3 class="heading-3 mt-3 text-[1.375rem] sm:text-[1.5rem]">{article.title}</h3>
-                  <p class="mt-3 flex-1 text-small leading-relaxed text-navy/65">{article.summary}</p>
-                  <a
-                    href="#"
-                    class="mt-6 inline-flex min-h-11 items-center text-small font-medium text-navy underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
-                    aria-disabled="true"
-                  >
-                    Read more
-                  </a>
-                </article>
-              ))
-            }
-          </div>
-        </div>
-      </section>
-
       <div class="container-site" aria-hidden="true"><div class="hairline"></div></div>
 
       <!-- LinkedIn -->
-      <section class="section bg-ivory-warm" aria-labelledby="linkedin-heading">
+      <section class="section bg-ivory" aria-labelledby="linkedin-heading">
         <div class="container-site fade-in text-center">
           <p class="section-label">LinkedIn</p>
           <div class="hairline mt-4"></div>
@@ -331,7 +248,7 @@ const youtubeThumb = hasYoutubeId
       </section>
 
       <!-- Newsletter -->
-      <section class="section bg-ivory" aria-labelledby="newsletter-heading">
+      <section class="section bg-ivory-warm" aria-labelledby="newsletter-heading">
         <div class="container-site fade-in">
           <div class="mx-auto max-w-xl text-center">
             <p class="section-label">Newsletter</p>
@@ -362,30 +279,29 @@ const youtubeThumb = hasYoutubeId
       </section>
 
       <!-- Contact -->
-      <section id="contact" class="section bg-ivory-warm" aria-labelledby="contact-heading">
+      <section id="contact" class="section bg-ivory" aria-labelledby="contact-heading">
         <div class="container-site">
-          <div class="fade-in grid items-start gap-10 md:grid-cols-2 md:gap-14">
-            <div>
-              <p class="section-label">Contact</p>
-              <div class="hairline-left"></div>
-              <h2 id="contact-heading" class="heading-2 mt-5">Book a 15-minute intro call</h2>
-              <p class="body-copy mt-4">
-                A short conversation to determine whether working together is a fit.
+          <div class="fade-in mx-auto max-w-2xl text-center">
+            <p class="section-label">Contact</p>
+            <div class="hairline mt-4"></div>
+            <h2 id="contact-heading" class="heading-2 mt-5">Book a 15-minute intro call</h2>
+            <p class="body-copy mx-auto mt-4">
+              A short conversation to determine whether working together is a fit.
+            </p>
+
+            <div class="card mx-auto mt-10 max-w-md bg-navy p-10 text-center text-ivory">
+              <p class="font-serif text-h3 text-ivory">Ready when you are</p>
+              <p class="mt-3 text-small text-ivory/70">
+                Schedule a brief introduction with Ashley.
               </p>
-              <a href="#[Calendar booking URL placeholder]" class="btn-primary mt-8">
+              <a
+                href="https://www.askashley.com/consultation"
+                class="btn-on-dark mt-8"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Book an intro call
               </a>
-            </div>
-
-            <div
-              class="flex min-h-[280px] items-center justify-center rounded-card border border-dashed border-navy/20 bg-ivory p-8 text-center"
-              role="region"
-              aria-label="Calendar booking widget placeholder"
-            >
-              <div>
-                <p class="font-serif text-h3 text-navy/45">Calendar</p>
-                <p class="mt-2 text-small text-navy/45">[Calendar embed / booking widget placeholder]</p>
-              </div>
             </div>
           </div>
         </div>
@@ -408,7 +324,7 @@ const youtubeThumb = hasYoutubeId
       const iframe = document.createElement('iframe');
       iframe.className = 'absolute inset-0 h-full w-full';
       iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1`;
-      iframe.title = 'Ashley Russo speaking appearance';
+      iframe.title = 'Ashley Russo media appearance';
       iframe.allow =
         'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
       iframe.allowFullscreen = true;

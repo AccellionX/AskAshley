@@ -1,0 +1,421 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const featuredLogos = [
+  '[Media / event logo placeholder]',
+  '[Media / event logo placeholder]',
+  '[Media / event logo placeholder]',
+  '[Media / event logo placeholder]',
+  '[Media / event logo placeholder]',
+];
+
+const focusAreas = [
+  {
+    title: '[Focus area 1 — confirm with Ashley]',
+    body: 'e.g. Equity compensation for tech professionals',
+  },
+  {
+    title: '[Focus area 2 — confirm with Ashley]',
+    body: 'e.g. Wealth planning for families',
+  },
+  {
+    title: '[Focus area 3 — confirm with Ashley]',
+    body: 'e.g. Tax-aware investing',
+  },
+];
+
+const speakingTopics = [
+  {
+    title: '[Speaking topic 1 from Ashley\'s site]',
+    body: '[Short description of this topic — to be confirmed]',
+  },
+  {
+    title: '[Speaking topic 2 from Ashley\'s site]',
+    body: '[Short description of this topic — to be confirmed]',
+  },
+  {
+    title: '[Speaking topic 3 from Ashley\'s site]',
+    body: '[Short description of this topic — to be confirmed]',
+  },
+];
+
+const mediaAppearances = [
+  {
+    outlet: 'CBS',
+    title: 'Tax Tips That Could Save You Money',
+  },
+  {
+    outlet: 'CNBC',
+    title: 'What is Financial Flexibility',
+  },
+  {
+    outlet: 'Fox',
+    title: 'Celebrating women in finance',
+  },
+];
+
+const insights = [
+  {
+    title: '[Insight article title placeholder]',
+    date: '[Date placeholder]',
+    summary: '[One-line article summary placeholder]',
+  },
+  {
+    title: '[Insight article title placeholder]',
+    date: '[Date placeholder]',
+    summary: '[One-line article summary placeholder]',
+  },
+  {
+    title: '[Insight article title placeholder]',
+    date: '[Date placeholder]',
+    summary: '[One-line article summary placeholder]',
+  },
+];
+
+const bio = `Ashley Russo is a nationally acclaimed financial strategist, speaker, and founder of Russo Wealth Management, an all-female advisory firm serving clients across the U.S. A trusted voice in finance and leadership, Ashley has been featured on Fox, CNBC, and CBS, and across top business publications. Through her work with companies like Apple, Airbnb, Lyft, Salesforce, and ServiceNow, she's helped thousands of professionals turn complexity into clarity — making financial planning feel human, achievable, and empowering.`;
+
+/** Replace with Ashley's preferred talk video ID to enable the lite-YouTube facade */
+const youtubeVideoId = 'PLACEHOLDER_VIDEO_ID';
+const hasYoutubeId = youtubeVideoId !== 'PLACEHOLDER_VIDEO_ID';
+const youtubeThumb = hasYoutubeId
+  ? `https://i.ytimg.com/vi/${youtubeVideoId}/hqdefault.jpg`
+  : null;
+---
+
+<Layout>
+  <div id="top">
+    <Header />
+
+    <main id="main">
+      <!-- Hero: mobile = copy → headshot → buttons; desktop = copy+buttons | headshot -->
+      <section class="section bg-ivory" aria-labelledby="hero-heading">
+        <div class="container-site grid items-center gap-8 md:grid-cols-[1.15fr_0.85fr] md:gap-x-14 md:gap-y-0">
+          <div class="fade-in order-1">
+            <p class="section-label mb-4">Wealth Management Advisor · Russo Wealth Management</p>
+            <h1 id="hero-heading" class="heading-display">
+              Confident wealth decisions for high-net-worth individuals, families, and tech leaders
+            </h1>
+            <p class="body-copy mt-6 text-lead text-navy/70">
+              Clear guidance for complex equity, family wealth, and long-term planning — without the noise.
+            </p>
+            <p class="mt-5 max-w-prose font-serif text-lead italic text-navy/75">
+              Clarity first. Then confidence.
+            </p>
+          </div>
+
+          <div class="fade-in order-2 md:row-span-2" style="transition-delay: 80ms">
+            <figure class="mx-auto w-full max-w-md overflow-hidden rounded-card bg-ivory-warm md:ml-auto md:mr-0">
+              <img
+                src="/images/ashley-russo-headshot.jpg"
+                alt="Ashley Russo, Wealth Management Advisor at Russo Wealth Management"
+                width="200"
+                height="280"
+                class="aspect-[4/5] h-full w-full object-cover object-top"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+              />
+            </figure>
+          </div>
+
+          <div class="fade-in order-3 mt-2 md:mt-8" style="transition-delay: 120ms">
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a href="#contact" class="btn-primary w-full sm:w-auto">Book an intro call</a>
+              <a href="#media" class="btn-secondary w-full sm:w-auto">Watch her latest talk</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="container-site" aria-hidden="true"><div class="hairline"></div></div>
+
+      <!-- As featured in -->
+      <section class="bg-ivory-warm py-14 md:py-16" aria-labelledby="featured-heading">
+        <div class="container-site">
+          <h2 id="featured-heading" class="sr-only">As featured in and spoken at</h2>
+          <p class="section-label mb-8 text-center">As featured in / Spoken at</p>
+          <ul class="fade-in flex flex-wrap items-center justify-center gap-x-10 gap-y-5">
+            {
+              featuredLogos.map((logo) => (
+                <li class="font-serif text-lead italic text-navy/55">{logo}</li>
+              ))
+            }
+          </ul>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="section bg-ivory" aria-labelledby="about-heading">
+        <div class="container-site">
+          <div class="fade-in mx-auto max-w-3xl text-center">
+            <p class="section-label">About</p>
+            <div class="hairline mt-4"></div>
+            <h2 id="about-heading" class="heading-2 mt-5">A clear approach to complex wealth</h2>
+            <p class="body-copy mx-auto mt-6 text-left sm:text-center">
+              {bio}
+            </p>
+          </div>
+
+          <div class="mt-14 grid gap-6 md:grid-cols-3">
+            {
+              focusAreas.map((area, i) => (
+                <article class="card fade-in" style={`transition-delay: ${i * 60}ms`}>
+                  <h3 class="heading-3 text-[1.375rem] sm:text-[1.5rem]">{area.title}</h3>
+                  <p class="mt-3 text-small leading-relaxed text-navy/65">{area.body}</p>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- Speaking -->
+      <section id="speaking" class="section bg-navy text-ivory" aria-labelledby="speaking-heading">
+        <div class="container-site">
+          <div class="fade-in max-w-2xl">
+            <p class="section-label-on-dark">Speaking</p>
+            <div class="mt-4 h-px w-12 bg-gold-soft/70" aria-hidden="true"></div>
+            <h2 id="speaking-heading" class="heading-2 mt-5 text-ivory">
+              Topics for corporate and association audiences
+            </h2>
+            <p class="mt-4 max-w-prose text-body text-ivory/70">
+              [Speaking intro copy placeholder — confirm preferred positioning for corporate and association events]
+            </p>
+          </div>
+
+          <div class="mt-12 grid gap-5 md:grid-cols-3">
+            {
+              speakingTopics.map((topic, i) => (
+                <article class="card-on-dark fade-in" style={`transition-delay: ${i * 60}ms`}>
+                  <h3 class="font-serif text-[1.375rem] font-medium tracking-[-0.01em] text-ivory sm:text-h3">
+                    {topic.title}
+                  </h3>
+                  <p class="mt-3 text-small leading-relaxed text-ivory/65">{topic.body}</p>
+                </article>
+              ))
+            }
+          </div>
+
+          <div class="fade-in mt-10">
+            <a href="#contact" class="btn-on-dark">Invite Ashley to speak</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Podcast & media -->
+      <section id="media" class="section bg-ivory-warm" aria-labelledby="media-heading">
+        <div class="container-site">
+          <div class="fade-in max-w-2xl">
+            <p class="section-label">Podcast &amp; media</p>
+            <div class="hairline-left"></div>
+            <h2 id="media-heading" class="heading-2 mt-5">Selected media appearances</h2>
+            <p class="body-copy mt-4">From Ask Ashley Media.</p>
+          </div>
+
+          <div class="fade-in mt-10">
+            {
+              hasYoutubeId ? (
+                <button
+                  type="button"
+                  class="lite-youtube group relative aspect-video w-full overflow-hidden rounded-card bg-navy-deep text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+                  data-youtube-id={youtubeVideoId}
+                  aria-label="Play Ashley Russo speaking appearance"
+                >
+                  <img
+                    src={youtubeThumb!}
+                    alt="Video thumbnail for Ashley Russo speaking appearance"
+                    class="absolute inset-0 h-full w-full object-cover transition-opacity duration-rise group-hover:opacity-90"
+                    loading="lazy"
+                    width="1280"
+                    height="720"
+                  />
+                  <span class="absolute inset-0 bg-navy-deep/35" aria-hidden="true"></span>
+                  <span
+                    class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-ivory/40 bg-navy/50 text-ivory backdrop-blur-sm"
+                    aria-hidden="true"
+                  >
+                    <svg class="ml-0.5 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                    </svg>
+                  </span>
+                </button>
+              ) : (
+                <div
+                  class="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-card bg-navy-deep text-center text-ivory"
+                  role="img"
+                  aria-label="YouTube video placeholder — replace PLACEHOLDER_VIDEO_ID with a real video ID"
+                >
+                  <div>
+                    <div
+                      class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-ivory/30"
+                      aria-hidden="true"
+                    >
+                      <svg class="ml-0.5 h-5 w-5 text-gold-soft" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                      </svg>
+                    </div>
+                    <p class="font-serif text-h3">Latest talk</p>
+                    <p class="mt-2 text-small text-ivory/60">[YouTube video ID placeholder]</p>
+                  </div>
+                </div>
+              )
+            }
+          </div>
+
+          <div class="mt-10 grid gap-5 md:grid-cols-3">
+            {
+              mediaAppearances.map((item, i) => (
+                <article class="card fade-in bg-ivory" style={`transition-delay: ${i * 60}ms`}>
+                  <p class="section-label text-[0.6875rem]">{item.outlet}</p>
+                  <h3 class="heading-3 mt-3 text-[1.375rem] sm:text-[1.5rem]">{item.title}</h3>
+                  <p class="mt-4 text-small text-navy/50">Appearance · Ask Ashley Media</p>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- Insights -->
+      <section id="insights" class="section bg-ivory" aria-labelledby="insights-heading">
+        <div class="container-site">
+          <div class="fade-in max-w-2xl">
+            <p class="section-label">Insights</p>
+            <div class="hairline-left"></div>
+            <h2 id="insights-heading" class="heading-2 mt-5">Notes on wealth and work</h2>
+          </div>
+
+          <div class="mt-12 grid gap-6 md:grid-cols-3">
+            {
+              insights.map((article, i) => (
+                <article class="card fade-in flex flex-col" style={`transition-delay: ${i * 60}ms`}>
+                  <time class="text-xs uppercase tracking-label text-navy/45">{article.date}</time>
+                  <h3 class="heading-3 mt-3 text-[1.375rem] sm:text-[1.5rem]">{article.title}</h3>
+                  <p class="mt-3 flex-1 text-small leading-relaxed text-navy/65">{article.summary}</p>
+                  <a
+                    href="#"
+                    class="mt-6 inline-flex min-h-11 items-center text-small font-medium text-navy underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+                    aria-disabled="true"
+                  >
+                    Read more
+                  </a>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <div class="container-site" aria-hidden="true"><div class="hairline"></div></div>
+
+      <!-- LinkedIn -->
+      <section class="section bg-ivory-warm" aria-labelledby="linkedin-heading">
+        <div class="container-site fade-in text-center">
+          <p class="section-label">LinkedIn</p>
+          <div class="hairline mt-4"></div>
+          <h2 id="linkedin-heading" class="heading-2 mt-5">Follow along on LinkedIn</h2>
+          <p class="body-copy mx-auto mt-4">
+            Short notes on wealth planning, leadership, and financial decision-making.
+          </p>
+          <a
+            href="https://www.linkedin.com/in/ashley-russo-nm/"
+            class="btn-secondary mt-8"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Follow on LinkedIn
+          </a>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="section bg-ivory" aria-labelledby="newsletter-heading">
+        <div class="container-site fade-in">
+          <div class="mx-auto max-w-xl text-center">
+            <p class="section-label">Newsletter</p>
+            <div class="hairline mt-4"></div>
+            <h2 id="newsletter-heading" class="heading-2 mt-5">Occasional notes</h2>
+            <p class="body-copy mx-auto mt-3">
+              Brief updates on wealth planning for individuals and families.
+            </p>
+            <form
+              class="mt-8 flex flex-col gap-3 sm:flex-row"
+              onsubmit="return false;"
+              aria-label="Newsletter signup (visual only)"
+            >
+              <label class="sr-only" for="newsletter-email">Email address</label>
+              <input
+                id="newsletter-email"
+                type="email"
+                name="email"
+                placeholder="Email address"
+                autocomplete="email"
+                class="min-h-11 w-full flex-1 rounded-card border border-navy/20 bg-ivory-soft px-4 text-body text-navy placeholder:text-navy/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+              />
+              <button type="button" class="btn-primary w-full sm:w-auto">Subscribe</button>
+            </form>
+            <p class="mt-3 text-xs text-navy/45">Visual prototype only — form does not submit.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section bg-ivory-warm" aria-labelledby="contact-heading">
+        <div class="container-site">
+          <div class="fade-in grid items-start gap-10 md:grid-cols-2 md:gap-14">
+            <div>
+              <p class="section-label">Contact</p>
+              <div class="hairline-left"></div>
+              <h2 id="contact-heading" class="heading-2 mt-5">Book a 15-minute intro call</h2>
+              <p class="body-copy mt-4">
+                A short conversation to determine whether working together is a fit.
+              </p>
+              <a href="#[Calendar booking URL placeholder]" class="btn-primary mt-8">
+                Book an intro call
+              </a>
+            </div>
+
+            <div
+              class="flex min-h-[280px] items-center justify-center rounded-card border border-dashed border-navy/20 bg-ivory p-8 text-center"
+              role="region"
+              aria-label="Calendar booking widget placeholder"
+            >
+              <div>
+                <p class="font-serif text-h3 text-navy/45">Calendar</p>
+                <p class="mt-2 text-small text-navy/45">[Calendar embed / booking widget placeholder]</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </div>
+</Layout>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.lite-youtube').forEach((el) => {
+    el.addEventListener('click', () => {
+      const id = el.getAttribute('data-youtube-id');
+      if (!id) return;
+
+      const wrap = document.createElement('div');
+      wrap.className = 'relative aspect-video w-full overflow-hidden rounded-card bg-navy-deep';
+
+      const iframe = document.createElement('iframe');
+      iframe.className = 'absolute inset-0 h-full w-full';
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1`;
+      iframe.title = 'Ashley Russo speaking appearance';
+      iframe.allow =
+        'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+
+      wrap.appendChild(iframe);
+      el.replaceWith(wrap);
+    });
+  });
+</script>

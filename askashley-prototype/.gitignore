@@ -1,0 +1,16 @@
+# Astro
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Logs / OS
+npm-debug.log*
+.DS_Store
+*.local
+
+# Env
+.env
+.env.*
+lighthouse-mobile.json

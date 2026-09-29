@@ -1,0 +1,84 @@
+---
+const year = new Date().getFullYear();
+
+const footerLinks = [
+  { href: '#about', label: 'About' },
+  { href: '#speaking', label: 'Speaking' },
+  { href: '#media', label: 'Media' },
+  { href: '#insights', label: 'Insights' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<footer class="bg-navy-deep text-ivory">
+  <div class="container-site section !py-14 md:!py-16">
+    <div class="grid gap-10 md:grid-cols-[1.2fr_1fr_auto]">
+      <div>
+        <p class="font-serif text-h3 tracking-brand text-ivory">Ashley Russo</p>
+        <p class="mt-2 text-small text-ivory/70">
+          Wealth Management Advisor · Russo Wealth Management
+        </p>
+      </div>
+
+      <nav aria-label="Footer">
+        <ul class="flex flex-col gap-1">
+          {
+            footerLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="inline-flex min-h-11 items-center text-small text-ivory/75 transition-colors hover:text-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-soft"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="flex gap-3 md:justify-end">
+        <a
+          href="https://www.linkedin.com/in/ashley-russo-nm/"
+          class="inline-flex h-11 w-11 items-center justify-center rounded-card border border-ivory/25 text-ivory/80 transition-colors hover:border-gold-soft hover:text-gold-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-soft"
+          aria-label="Ashley Russo on LinkedIn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+        <a
+          href="[YouTube channel URL placeholder]"
+          class="inline-flex h-11 w-11 items-center justify-center rounded-card border border-ivory/25 text-ivory/80 transition-colors hover:border-gold-soft hover:text-gold-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-soft"
+          aria-label="YouTube channel (URL placeholder)"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path>
+            <path d="m10 15 5-3-5-3z"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-12 border-t border-ivory/15 pt-8">
+      <p class="text-xs leading-relaxed text-ivory/70">
+        [Required regulatory disclosures and firm information, to be provided by Ashley's compliance team]
+      </p>
+      <p class="mt-3">
+        <a
+          href="#[Form ADV / Disclosures placeholder]"
+          class="inline-flex min-h-11 items-center text-xs text-gold-soft underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-soft"
+        >
+          Form ADV / Disclosures
+        </a>
+      </p>
+      <p class="mt-6 text-xs text-ivory/65">
+        © {year} Ashley Russo · Russo Wealth Management. Prototype for review.
+      </p>
+    </div>
+  </div>
+</footer>

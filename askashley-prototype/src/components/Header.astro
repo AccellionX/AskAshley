@@ -1,0 +1,94 @@
+---
+const navLinks = [
+  { href: '#about', label: 'About' },
+  { href: '#speaking', label: 'Speaking' },
+  { href: '#media', label: 'Media' },
+  { href: '#insights', label: 'Insights' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-navy/10 bg-ivory/95 backdrop-blur-sm">
+  <div class="container-site flex min-h-16 items-center justify-between gap-4 py-3">
+    <a
+      href="#top"
+      class="font-serif text-xl tracking-brand text-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold md:text-[1.375rem]"
+      aria-label="Ashley Russo — home"
+    >
+      Ashley Russo
+    </a>
+
+    <nav class="hidden items-center gap-8 lg:flex" aria-label="Primary">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="min-h-11 inline-flex items-center text-small font-medium text-navy/75 transition-colors hover:text-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="#contact" class="btn-primary hidden lg:inline-flex">
+        Book an intro call
+      </a>
+
+      <button
+        type="button"
+        id="menu-toggle"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-card border border-navy/20 text-navy transition-colors hover:bg-ivory-warm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold lg:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open menu"
+      >
+        <span class="sr-only">Menu</span>
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-nav" class="hidden border-t border-navy/10 bg-ivory lg:hidden" hidden>
+    <nav class="container-site flex flex-col py-2" aria-label="Mobile">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="mobile-nav-link inline-flex min-h-11 items-center text-body font-medium text-navy/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a href="#contact" class="btn-primary mobile-nav-link mt-3 w-full">
+        Book an intro call
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  if (toggle && mobileNav) {
+    const setOpen = (open: boolean) => {
+      mobileNav.classList.toggle('hidden', !open);
+      mobileNav.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+
+    toggle.addEventListener('click', () => {
+      setOpen(mobileNav.hidden);
+    });
+
+    mobileNav.querySelectorAll('.mobile-nav-link').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+  }
+</script>
